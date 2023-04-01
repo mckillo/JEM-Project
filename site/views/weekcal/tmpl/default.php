@@ -4,7 +4,7 @@
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
 defined('_JEXEC') or die;
 use Joomla\CMS\Router\Route;
@@ -40,7 +40,6 @@ use Joomla\CMS\Language\Text;
 	$limit = $this->params->get('daylimit', 10);
 	$evbg_usecatcolor = $this->params->get('eventbg_usecatcolor', 0);
 	$currentWeek = $this->currentweek;
-	// $firstDate = strftime("%Y-%m-%d", $this->cal->getFirstDayTimeOfWeek($currentWeek));
 	$firstDate = date("Y-m-d", $this->cal->getFirstDayTimeOfWeek($currentWeek));
 	$showtime = $this->settings->get('global_show_timedetails', 1);
 
@@ -50,9 +49,6 @@ use Joomla\CMS\Language\Text;
 		}
 
 		//get event date
-		// $year = strftime('%Y', strtotime($row->dates));
-		// $month = strftime('%m', strtotime($row->dates));
-		// $day = strftime('%d', strtotime($row->dates));
 		$year = date('Y', strtotime($row->dates));
 		$month = date('m', strtotime($row->dates));
 		$day = date('d', strtotime($row->dates));

@@ -4,7 +4,7 @@
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
 defined('_JEXEC') or die;
 ?>
@@ -72,7 +72,6 @@ defined('_JEXEC') or die;
 					if (!$row->times) {
 						$displaytime = '-';
 					} else {
-						// $time = strftime( $this->jemsettings->formattime, strtotime( $row->times ));
 						$time = date( $this->jemsettings->formattime, strtotime( $row->times ));
 						$displaytime = $time.' '.$this->jemsettings->timename;
 					}

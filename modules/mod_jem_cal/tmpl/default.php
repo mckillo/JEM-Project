@@ -5,7 +5,7 @@
  * @subpackage JEM Calendar Module
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2008 Toni Smillie www.qivva.com
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  *
  * Original Eventlist calendar from Christoph Lukes www.schlu.net
  * PHP Calendar (version 2.3), written by Keith Devens
@@ -53,7 +53,6 @@ $uxtime_first_of_month = gmmktime(0, 0, 0, $month, 1, $year);
 # Remember that mktime will automatically correct if invalid dates are entered
 #  for instance, mktime(0,0,0,12,32,1997) will be the date for Jan 1, 1998
 #  this provides a built in "rounding" feature to generate_calendar()
-// $month_weekday = gmstrftime('%w', $uxtime_first_of_month);
 $month_weekday = gmdate('w', $uxtime_first_of_month);
 $days_in_month = gmdate('t', $uxtime_first_of_month);
 

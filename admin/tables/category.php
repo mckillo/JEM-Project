@@ -4,7 +4,7 @@
  * @package     JEM
  * @copyright   Copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright   Copyright (C) 2005-2009 Christoph Lukes
- * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license     https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
 defined('_JEXEC') or die;
 
@@ -85,11 +85,10 @@ class JemTableCategory extends JTableNested
 	public function insertIgnore($updateNulls = false)
 	{
 		$ret = $this->_insertIgnoreObject($this->_tbl, $this, $this->_tbl_key);
-		if (!$ret) {
+		if ($ret < 0) {
 			$this->setError(get_class($this).'::store failed - '.$this->_db->getError());
-			return false;
 		}
-		return true;
+		return $ret;
 	}
 
 	/**
@@ -116,8 +115,9 @@ class JemTableCategory extends JTableNested
 			$values[] = $this->_db->quote($v);
 		}
 		$this->_db->setQuery(sprintf($fmtsql, implode(",", $fields), implode(",", $values)));
-		if ($this->_db->execute() === false){
-			return false;
+		$results = $this->_db->execute();
+        if ($results === false){
+			return -1;
 		}
 		$id = $this->_db->insertid();
 		if ($keyName && $id) {

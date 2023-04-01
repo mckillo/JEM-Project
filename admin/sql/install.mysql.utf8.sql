@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `#__jem_events` (
   `modified_by` int(11) unsigned NOT NULL DEFAULT '0',
   `version` int(11) unsigned NOT NULL DEFAULT '0',
   `author_ip` varchar(15) NOT NULL DEFAULT '',
-  `created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `introtext` mediumtext NOT NULL,
   `meta_keywords` varchar(200) DEFAULT NULL,
   `meta_description` varchar(255) DEFAULT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `#__jem_venues` (
   `map` tinyint(4) NOT NULL DEFAULT '0',
   `created_by` int(11) unsigned NOT NULL DEFAULT '0',
   `author_ip` varchar(15) NOT NULL DEFAULT '',
-  `created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime NULL DEFAULT NULL,
   `modified_by` int(11) unsigned NOT NULL DEFAULT '0',
   `version` int(11) unsigned NOT NULL DEFAULT '0',
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `#__jem_categories` (
   `level` int(10) unsigned NOT NULL DEFAULT '1',
   `language` varchar(7) DEFAULT NULL,
   `created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `created_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `created_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `path` varchar(255) DEFAULT NULL,
   `metadata` varchar(2048) DEFAULT NULL,
   `modified_time` datetime NULL DEFAULT NULL,
@@ -289,7 +289,7 @@ INSERT IGNORE INTO #__jem_config (`keyname`, `value`) VALUES
 ('attachments_types', 'txt,pdf,jpg,jpeg,gif,png,zip,tar.gz'),
 ('recurrence_anticipation', '60'),
 ('ical_max_items', '100'),
-('DEFAULTCountry', ''),
+('defaultCountry', ''),
 ('csv_separator', ';'),
 ('csv_delimiter', '"'),
 ('csv_bom', '1'),
@@ -554,3 +554,47 @@ INSERT IGNORE INTO `#__jem_countries` (`id`, `continent`, `iso2`, `iso3`, `un`, 
 
 INSERT IGNORE INTO `#__jem_categories` (`id`, `parent_id`, `lft`, `rgt`, `level`, `catname`, `alias`, `access`, `published`, `created_time` ) VALUES
 (1, 0, 0, 1, 0, 'root', 'root', 1, 1, now());
+
+ALTER TABLE `#__jem_attachments`
+  MODIFY COLUMN `added` datetime NULL DEFAULT NULL;
+
+ALTER TABLE `#__jem_categories`
+  MODIFY COLUMN `description` mediumtext NULL DEFAULT NULL
+  , MODIFY COLUMN `meta_keywords` text NULL DEFAULT NULL
+  , MODIFY COLUMN `meta_description` text NULL DEFAULT NULL
+  , MODIFY COLUMN `checked_out_time` datetime NULL DEFAULT NULL
+  , MODIFY COLUMN `note` varchar(255) NULL DEFAULT NULL
+  , MODIFY COLUMN `language` varchar(7) NULL DEFAULT NULL
+  , MODIFY COLUMN `created_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  , MODIFY COLUMN `path` varchar(255) NULL DEFAULT NULL
+  , MODIFY COLUMN `metadata` varchar(2048) NULL DEFAULT NULL
+  , MODIFY COLUMN `modified_time` datetime NULL DEFAULT NULL
+  , MODIFY COLUMN `email` varchar(200) NULL DEFAULT NULL;
+
+ALTER TABLE `#__jem_cats_event_relations`
+  MODIFY COLUMN `ordering` tinyint(11) NOT NULL DEFAULT 0;
+
+ALTER TABLE `#__jem_events`
+  MODIFY COLUMN `modified` datetime NULL DEFAULT NULL
+  , MODIFY COLUMN `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  , MODIFY COLUMN `meta_keywords` varchar(200) NULL DEFAULT NULL
+  , MODIFY COLUMN `meta_description` varchar(255) NULL DEFAULT NULL
+  , MODIFY COLUMN `checked_out_time` datetime NULL DEFAULT NULL
+  , MODIFY COLUMN `attribs` varchar(5120) NOT NULL DEFAULT ''''
+  , MODIFY COLUMN `language` char(7) NOT NULL DEFAULT '''';
+
+ALTER TABLE `#__jem_groups`
+  MODIFY COLUMN `description` mediumtext NULL DEFAULT NULL
+  , MODIFY COLUMN `checked_out_time` datetime NULL DEFAULT NULL;
+
+ALTER TABLE `#__jem_venues`
+  MODIFY COLUMN `locdescription` mediumtext NULL DEFAULT NULL
+  , MODIFY COLUMN `meta_keywords` text NULL DEFAULT NULL
+  , MODIFY COLUMN `meta_description` text NULL DEFAULT NULL
+  , MODIFY COLUMN `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  , MODIFY COLUMN `modified` datetime NULL DEFAULT NULL
+  , MODIFY COLUMN `checked_out_time` datetime NULL DEFAULT NULL
+  , MODIFY COLUMN `publish_up` datetime NULL DEFAULT NULL
+  , MODIFY COLUMN `publish_down` datetime NULL DEFAULT NULL
+  , MODIFY COLUMN `attribs` varchar(5120) NULL DEFAULT NULL
+  , MODIFY COLUMN `language` char(7) NULL DEFAULT NULL;

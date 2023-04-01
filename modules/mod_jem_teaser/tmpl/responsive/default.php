@@ -5,7 +5,7 @@
  * @subpackage JEM Teaser Module
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
 defined('_JEXEC') or die;
 
@@ -38,8 +38,7 @@ if(file_exists($css_path.'/'.$module_name.'.css')) {
  <?php
  $imagewidth = 'inherit';
  if ($jemsettings->imagewidth != 0) {
-  $imagewidth = $jemsettings->imagewidth / 2; 
-  $imagewidth = $imagewidth.'px';
+  $imagewidth = $jemsettings->imagewidth .'px';
  }
  $imagewidthstring = 'jem-imagewidth';
  if (JemHelper::jemStringContains($params->get('moduleclass_sfx'), $imagewidthstring)) {
@@ -168,21 +167,12 @@ if(file_exists($css_path.'/'.$module_name.'.css')) {
                 <?php echo $item->catname; ?>
               </div>
             <?php endif; ?>
-              <?php if ($item->eventlink) : ?>
-                  <div class="jem-readmore">
-                      <a href="<?php echo $item->eventlink ?>" title="<?php echo Text::_('COM_JEM_EVENT_READ_MORE_TITLE'); ?>">
-                          <!--<button class="jem-btn btn">-->
-                          <?php echo Text::_('COM_JEM_EVENT_READ_MORE_TITLE'); ?>
-                          <!--</button>-->
-                      </a>
-                  </div>
-              <?php endif; ?>
           </div>
         </div>
         <div class="jem-event-image-teaser">
           <div class="jem-row-image-teaser">
             <?php if($item->showimageevent): ?>
-            <div class="jem-description-teaser">
+            <div class="jem-eventimg-teaser">
               <?php if(strpos($item->eventimage,'/media/system/images/blank.png') === false) : ?>
                 <?php if (!JemHelper::jemStringContains($params->get('moduleclass_sfx'), 'jem-noimageevent')) : ?>
                   <?php if(!empty($item->eventimage)) : ?>
@@ -206,13 +196,22 @@ if(file_exists($css_path.'/'.$module_name.'.css')) {
                       <?php endif; ?>
                   <?php endif; ?>
               <?php endif; ?>
-
-
-            <?php echo $item->eventdescription; ?>
-            <?php if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
-              echo '<a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a>';
-              endif;
-            ?>
+            </div>
+            <div class="jem-description-teaser">
+	            <?php echo $item->eventdescription; ?>
+	            <?php if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
+	              echo '<a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a>';
+	              endif;
+	            ?>
+	            <?php if ($item->eventlink) : ?>
+	                <div class="jem-readmore">
+	                    <a href="<?php echo $item->eventlink ?>" title="<?php echo Text::_('COM_JEM_EVENT_READ_MORE_TITLE'); ?>">
+	                        <!--<button class="jem-btn btn">-->
+	                        <?php echo Text::_('COM_JEM_EVENT_READ_MORE_TITLE'); ?>
+	                        <!--</button>-->
+	                    </a>
+	                </div>
+	            <?php endif; ?>
             </div>
             <?php endif; ?>
           </div>

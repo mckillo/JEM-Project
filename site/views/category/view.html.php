@@ -4,7 +4,7 @@
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
 defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
@@ -86,8 +86,6 @@ class JemViewCategory extends JemView
 			$document->addScript($url.'media/com_jem/js/calendar.js');
 
 			// Retrieve date variables
-			// $year  = (int)$app->input->getInt('yearID', strftime("%Y"));
-			// $month = (int)$app->input->getInt('monthID', strftime("%m"));
 			$year  = (int)$app->input->getInt('yearID', date("Y"));
 			$month = (int)$app->input->getInt('monthID', date("m"));
 

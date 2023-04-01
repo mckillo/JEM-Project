@@ -4,7 +4,7 @@
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
 
 defined('_JEXEC') or die;
@@ -697,10 +697,8 @@ class JemModelEventslist extends JModelList
 						$nextday = mktime(0, 0, 0, $item->start_month, $day, $item->start_year);
 
 						# ensure we only generate days of current month in this loop
-						// if (strftime('%m', $this->_date) == strftime('%m', $nextday)) {
 						if (date('m', $this->_date) == date('m', $nextday)) {
 							$multi[$counter] = clone $item;
-							// $multi[$counter]->dates = strftime('%Y-%m-%d', $nextday);
 							$multi[$counter]->dates = date('Y-m-d', $nextday);
 
 							if ($multi[$counter]->dates < $item->enddates) {

@@ -4,7 +4,7 @@
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
 defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
@@ -81,8 +81,6 @@ class JemViewCalendar extends JemView
 		// JHtml::_('script', 'media/com_jem/js/calendar.js');
 		$document->addScript($url.'media/com_jem/js/calendar.js');
 
-		// $year  = (int)$jinput->getInt('yearID', strftime("%Y"));
-		// $month = (int)$jinput->getInt('monthID', strftime("%m"));
 		$year  = (int)$jinput->getInt('yearID', date("Y"));
 		$month = (int)$jinput->getInt('monthID', date("m"));
 

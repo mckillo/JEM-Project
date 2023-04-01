@@ -1,10 +1,10 @@
 <?php
 /**
- * @version     2.3.12
+ * @version     2.3.14
  * @package     JEM
  * @copyright   Copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright   Copyright (C) 2005-2009 Christoph Lukes
- * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license     https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
 defined('_JEXEC') or die;
 use Joomla\CMS\Router\Route;
@@ -109,17 +109,17 @@ $saveOrder 	= ($listOrder == 'a.lft' && strtolower($listDirn) == 'asc');
 					<td colspan="15">
 						<?php //echo (method_exists($this->pagination, 'getPaginationLinks') ? $this->pagination->getPaginationLinks(null, array('showLimitBox' => true)) : $this->pagination->getListFooter()); ?>
 						<div class="row align-items-center">
-							<div class="col-md-4">
+                            <div class="col-md-9">
+                                <?php
+                                echo  (method_exists($this->pagination, 'getPaginationLinks') ? $this->pagination->getPaginationLinks(null) : $this->pagination->getListFooter());
+                                ?>
+                            </div>
+							<div class="col-md-3">
 								<div class="limit float-end">
 									<?php 
 										echo $this->pagination->getLimitBox();	
 									?>
 								</div>
-							</div>
-							<div class="col-md-8">
-								<?php
-									echo  (method_exists($this->pagination, 'getPaginationLinks') ? $this->pagination->getPaginationLinks(null) : $this->pagination->getListFooter()); 
-								?>
 							</div>
 						</div>
 					</td>

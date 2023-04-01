@@ -4,7 +4,7 @@
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
 defined('_JEXEC') or die;
 use Joomla\CMS\Language\Text;
@@ -46,9 +46,6 @@ use Joomla\CMS\HTML\HTMLHelper;
 		}
 
 		//get event date
-		// $year = strftime('%Y', strtotime($row->dates));
-		// $month = strftime('%m', strtotime($row->dates));
-		// $day = strftime('%d', strtotime($row->dates));
 		$year = date('Y', strtotime($row->dates));
 		$month = date('m', strtotime($row->dates));
 		$day = date('d', strtotime($row->dates));

@@ -5,7 +5,7 @@
  * @subpackage JEM Wide Module
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
 defined('_JEXEC') or die;
 
@@ -199,12 +199,10 @@ abstract class ModJemWideHelper
 		} else {
 			//Get needed timestamps and format
 			$yesterday_stamp = mktime(0, 0, 0, date("m"), date("d")-1, date("Y"));
-			// $yesterday       = strftime("%Y-%m-%d", $yesterday_stamp);
 			$yesterday       = date("Y-m-d", $yesterday_stamp);
 			$today_stamp     = mktime(0, 0, 0, date("m"), date("d"), date("Y"));
 			$today           = date('Y-m-d');
 			$tomorrow_stamp  = mktime(0, 0, 0, date("m"), date("d")+1, date("Y"));
-			// $tomorrow        = strftime("%Y-%m-%d", $tomorrow_stamp);
 			$tomorrow        = date("Y-m-d", $tomorrow_stamp);
 
 			$dates_stamp     = $row->dates ? strtotime($row->dates) : null;

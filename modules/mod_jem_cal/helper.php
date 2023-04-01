@@ -5,7 +5,7 @@
  * @subpackage JEM Calendar Module
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2008 Toni Smillie www.qivva.com
- * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  *
  * Original Eventlist calendar from Christoph Lukes www.schlu.net
  * PHP Calendar (version 2.3), written by Keith Devens
@@ -105,8 +105,6 @@ abstract class ModJemCalHelper extends JModuleHelper
 		# Only select events within specified date range. (choosen month)
 		$monthstart = mktime(0, 0,  1, $greq_month,     1, $greq_year);
 		$monthend   = mktime(0, 0, -1, $greq_month + 1, 1, $greq_year);
-		// $filter_date_from = $db->Quote(strftime('%Y-%m-%d', $monthstart));
-		// $filter_date_to   = $db->Quote(strftime('%Y-%m-%d', $monthend));
 		$filter_date_from = $db->Quote(date('Y-m-d', $monthstart));
 		$filter_date_to   = $db->Quote(date('Y-m-d', $monthend));
 		$where_from = ' DATEDIFF(IF (a.enddates IS NOT NULL, a.enddates, a.dates), ' . $filter_date_from . ') >= 0';
@@ -217,7 +215,6 @@ abstract class ModJemCalHelper extends JModuleHelper
 				for ($count = $event->created_day; $count <= $eday; $count++) {
 
 					$uxdate = mktime(0, 0, 0, $greq_month, $count, $greq_year);
-					// $tdate = strftime('%Y%m%d',$uxdate);// Toni change Joomla 1.5
 					$tdate = date('Ymd',$uxdate);// Toni change Joomla 1.5
 
 					if (empty($days[$count][1])) {
