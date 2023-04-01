@@ -281,15 +281,15 @@ class com_jemInstallerScript
         echo '<p>' . Text::_('COM_JEM_POSTFLIGHT_' . strtoupper($type) . '_TEXT') . '</p>';
 
         if (strtolower($type) == 'update') {
-            // Changes between 2.3.13 -> 2.3.14
-            if (version_compare($this->oldRelease, '2.3.14', 'lt') && version_compare($this->newRelease, '2.3.13', 'gt')) {
+            // Changes between 2.3.13 -> 2.3.15
+            if (version_compare($this->oldRelease, '2.3.15', 'lt') && version_compare($this->newRelease, '2.3.13', 'gt')) {
                 // change categoriesdetailed view name in menu items
-                $this->updateJemMenuItems2314();
+                $this->updateJemMenuItems2315();
             }
         }
         elseif (strtolower($type) == 'install') {
             $this->fixJemMenuItems();
-            $this->updateJem2314();
+            $this->updateJem2315();
         }
     }
 
@@ -573,11 +573,11 @@ class com_jemInstallerScript
 
     /**
      * Update data items related to datetime format into JEM.
-     * (required when updating/migrating from 2.3.3 or 2.3.5 to new version 2.3.14 with support Joomla 4.2.x or newer)
+     * (required when updating/migrating from 2.3.3 or 2.3.5 to new version 2.3.15 with support Joomla 4.2.x or newer)
      *
      * @return void
      */
-    private function updateJem2314()
+    private function updateJem2315()
     {
         // write changed datetime entry '0000-00-00 ...' to null into DB
         $db = JFactory::getDbo();
