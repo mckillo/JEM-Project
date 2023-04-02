@@ -281,8 +281,8 @@ class com_jemInstallerScript
         echo '<p>' . Text::_('COM_JEM_POSTFLIGHT_' . strtoupper($type) . '_TEXT') . '</p>';
 
         if (strtolower($type) == 'update') {
-            // Changes between 2.3.13 -> 2.3.15
-            if (version_compare($this->oldRelease, '2.3.15', 'lt') && version_compare($this->newRelease, '2.3.13', 'gt')) {
+            // Changes between 2.3.5 -> 2.3.15
+            if (version_compare($this->oldRelease, '2.3.15', 'lt') && version_compare($this->newRelease, '2.3.5', 'gt')) {
                 // change categoriesdetailed view name in menu items
                 $this->updateJem2315();
             }
