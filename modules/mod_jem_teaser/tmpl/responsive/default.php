@@ -1,12 +1,13 @@
 <?php
 /**
- * @version 2.3.12
+ * @version 2.3.15
  * @package JEM
  * @subpackage JEM Teaser Module
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
  * @license https://www.gnu.org/licenses/gpl-3.0 GNU/GPL
  */
+
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Language\Text;
@@ -198,11 +199,11 @@ if(file_exists($css_path.'/'.$module_name.'.css')) {
               <?php endif; ?>
             </div>
             <div class="jem-description-teaser">
-	            <?php echo $item->eventdescription; ?>
-	            <?php if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
-	              echo '<a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a>';
-	              endif;
-	            ?>
+            <?php echo $item->eventdescription; ?>
+            <?php if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
+              echo '<a class="readmore" href="'.$item->link.'">'.$item->linkText.'</a>';
+              endif;
+            ?>
 	            <?php if ($item->eventlink) : ?>
 	                <div class="jem-readmore">
 	                    <a href="<?php echo $item->eventlink ?>" title="<?php echo Text::_('COM_JEM_EVENT_READ_MORE_TITLE'); ?>">
