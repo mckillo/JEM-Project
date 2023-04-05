@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -874,20 +874,14 @@ class JemOutput
 	static public function tooltip($title, $text, $classes = '', $position = '')
 	{
 		$result = array();
-		if (version_compare(JVERSION, '3.3', 'lt')) {
-			// on Joomla! 2.5/3.2 we use good old tooltips
-			//HTMLHelper::_('behavior.tooltip');
-			$result = 'class="'.$classes.' hasTip" data-bs-toggle="tooltip" title="'.$title.'::'.$text.'"';
-		} else {
-			// on Joomla! 3.3+ we must use the new tooltips
-			// HTMLHelper::_('bootstrap.tooltip');
-			$result = 'class="'.$classes.' hasTooltip" data-bs-toggle="tooltip" title="'.HTMLHelper::tooltipText($title, $text, 0).'"';
-			if (!empty($position) && (array_search($position, array('top', 'bottom', 'left', 'right')) !== false)) {
-				$result .= ' data-placement="'.$position.'"';
-			}
+
+		// on Joomla! 3.3+ we must use the new tooltips
+		// HTMLHelper::_('bootstrap.tooltip');
+		$result = 'class="'.$classes.' hasTooltip" data-bs-toggle="tooltip" title="'.HTMLHelper::tooltipText($title, $text, 0).'"';
+		if (!empty($position) && (array_search($position, array('top', 'bottom', 'left', 'right')) !== false)) {
+			$result .= ' data-placement="'.$position.'"';
 		}
-		
-		
+
 		return $result;
 	}
 

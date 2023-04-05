@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -222,20 +222,20 @@ Joomla.submitbutton = function(task)
 				</li>
 				<li><?php echo $this->form->getLabel('enddates'); ?> <?php echo $this->form->getInput('enddates'); ?>
 				</li>
-				<li><?php echo $this->form->getLabel('times'); ?> <?php echo $this->form->getInput('times'); ?>
+                <li><div class="label-form"><?php echo $this->form->getLabel('times'); ?></div> <?php echo $this->form->getInput('times'); ?>
 				</li>
-				<li><?php echo $this->form->getLabel('endtimes'); ?> <?php echo $this->form->getInput('endtimes'); ?>
+                <li><div class="label-form"><?php echo $this->form->getLabel('endtimes'); ?></div> <?php echo $this->form->getInput('endtimes'); ?>
 				</li>
-				<li><?php echo $this->form->getLabel('cats'); ?> <?php echo $this->form->getInput('cats'); ?>
+                <li><div class="label-form"><?php echo $this->form->getLabel('cats'); ?></div> <?php echo $this->form->getInput('cats'); ?>
 				</li>
 			</ul>
 		</fieldset>
 
 		<fieldset class="adminform">
 			<ul class="adminformlist">
-				<li><?php echo $this->form->getLabel('locid'); ?> <?php echo $this->form->getInput('locid'); ?>
+				<li><div class="label-form"><?php echo $this->form->getLabel('locid'); ?></div><?php echo $this->form->getInput('locid'); ?>
 				</li>
-				<li><?php echo $this->form->getLabel('contactid'); ?> <?php echo $this->form->getInput('contactid'); ?>
+				<li><div class="label-form"><?php echo $this->form->getLabel('contactid'); ?></div><?php echo $this->form->getInput('contactid'); ?>
 				</li>
 				<li><?php echo $this->form->getLabel('published'); ?> <?php echo $this->form->getInput('published'); ?>
 				</li>
@@ -506,12 +506,12 @@ Joomla.submitbutton = function(task)
 							<input class="inputbox" type="button" onclick="insert_keyword('[title]')" value="<?php echo Text::_ ( 'COM_JEM_EVENT_TITLE' );	?>" />
 							<input class="inputbox" type="button" onclick="insert_keyword('[a_name]')" value="<?php	echo Text::_ ( 'COM_JEM_VENUE' );?>" />
 							<input class="inputbox" type="button" onclick="insert_keyword('[categories]')" value="<?php	echo Text::_ ( 'COM_JEM_CATEGORIES' );?>" />
-							<input class="inputbox" type="button" onclick="insert_keyword('[dates]')" value="<?php echo Text::_ ( 'COM_JEM_DATE' );?>" />
+							<input class="inputbox" type="button" onclick="insert_keyword('[dates]')" value="<?php echo Text::_ ( 'COM_JEM_STARTDATE' );?>" />
 
 							<p>
-								<input class="inputbox" type="button" onclick="insert_keyword('[times]')" value="<?php echo Text::_ ( 'COM_JEM_EVENT_TIME' );?>" />
+								<input class="inputbox" type="button" onclick="insert_keyword('[times]')" value="<?php echo Text::_ ( 'COM_JEM_STARTTIME' );?>" />
 								<input class="inputbox" type="button" onclick="insert_keyword('[enddates]')" value="<?php echo Text::_ ( 'COM_JEM_ENDDATE' );?>" />
-								<input class="inputbox" type="button" onclick="insert_keyword('[endtimes]')" value="<?php echo Text::_ ( 'COM_JEM_END_TIME' );?>" />
+								<input class="inputbox" type="button" onclick="insert_keyword('[endtimes]')" value="<?php echo Text::_ ( 'COM_JEM_ENDTIME' );?>" />
 							</p>
 							<br />
 

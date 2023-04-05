@@ -1,5 +1,5 @@
 /**
- * @version 2.3.16
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -47,9 +47,6 @@ input#clear {
 }
 input#clear:focus {cursor: pointer;}
 .colorpicker {border:1px solid grey;}
-
-.css-color-settings li label {width: 140px;}
-.css-color-settings li input.form-control {display: inline-block;}
 
 div.linkicon a {
      display:block;
@@ -732,6 +729,17 @@ fieldset.adminform .inputbox {margin-left: inherit;}
      margin-top: 10px;
      padding: 2px 0 0 0;
 }
+
+.help-toc span {
+	font-size:0.8em;
+	padding-right: 1em;
+	color: #aaa
+}
+
+table.adminlist.help-toc {
+	border: none;
+}
+
 /* --- LABEL CODE ---- */
 /* Taken from Joomla! template "isis" */
 .label {
@@ -768,6 +776,10 @@ a.label:focus {
 .label-info[href] {background-color: #245269;}
 .label-inverse {background-color: #333;}
 .label-inverse[href] {background-color: #1a1a1a;}
+
+.label-form {float:left; padding: 10px 0 18px 0; min-width: 100px;}
+.select-time {padding: 5px;margin-top:5px;}
+
 /* --- ALERT CODE ---- */
 /* Taken from Joomla! template "isis" */
 .alert {

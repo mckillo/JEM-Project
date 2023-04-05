@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -58,7 +58,7 @@ class JFormFieldModal_Venue extends JFormField
 		
 
 		// if ($error = $db->getErrorMsg()) {
-		// 	\Joomla\CMS\Factory::getApplication()->enqueueMessage($error, 'warning');
+		//  Factory::getApplication()->enqueueMessage($error, 'warning');
 		// }
 		try
 		{
@@ -67,7 +67,7 @@ class JFormFieldModal_Venue extends JFormField
 		}
 		catch (RuntimeException $e)
 		{			
-			\Joomla\CMS\Factory::getApplication()->enqueueMessage($e->getMessage(), 'notice');
+			Factory::getApplication()->enqueueMessage($e->getMessage(), 'notice');
 		}
 
 		if (empty($venue)) {
@@ -77,7 +77,7 @@ class JFormFieldModal_Venue extends JFormField
 
 		// The current venue input field
 		$html[] = '<div class="fltlft">';
-		$html[] = '  <input type="text" id="'.$this->id.'_name" value="'.$venue.'" disabled="disabled" size="35" />';
+		$html[] = '  <input class="form-control" type="text" id="'.$this->id.'_name" value="'.$venue.'" disabled="disabled" size="35" />';
 		$html[] = '</div>';
 
 		// The venue select button
@@ -96,15 +96,10 @@ class JFormFieldModal_Venue extends JFormField
 				'footer' => '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>'
 			)
 		);
-		$html[] ='<button type="button" class="btn btn-link" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#venue-modal-1">'.Text::_('COM_JEM_SELECT').'
+		$html[] ='<button type="button" class="btn btn-link btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#venue-modal-1">'.Text::_('COM_JEM_SELECT').'
 		</button>';
 		$html[] = '  </div>';
 		$html[] = '</div>';
-
-		
-
-
-
 
 		// The active venue id field
 		if (0 == (int)$this->value) {

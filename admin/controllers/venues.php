@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -77,11 +77,7 @@ class JemControllerVenues extends JControllerAdmin
 				}
 			}
 
-			if (version_compare(JVERSION, '3.0', 'lt')) {
-				# postDeleteHook doesn't exists in Joomla 2.x
-			} else {
-				$this->postDeleteHook($model,$cid);
-			}
+            $this->postDeleteHook($model,$cid);
 		}
 
 		$cache = JFactory::getCache('com_jem');

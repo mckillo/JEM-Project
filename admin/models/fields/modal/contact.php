@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -74,7 +74,7 @@ class JFormFieldModal_Contact extends JFormField
 
 		// The current contact input field
 		$html[] = '<div class="fltlft">';
-		$html[] = '  <input type="text" id="'.$this->id.'_name" value="'.$contact.'" disabled="disabled" size="35" />';
+		$html[] = '  <input class="form-control" type="text" id="'.$this->id.'_name" value="'.$contact.'" disabled="disabled" size="35" />';
 		$html[] = '</div>';
 
 		// The contact select button
@@ -93,7 +93,7 @@ class JFormFieldModal_Contact extends JFormField
 				'footer' => '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>'
 			)
 		);
-		$html[] ='<button type="button" class="btn btn-link"  data-bs-toggle="modal" data-bs-target="#contact-modal">'.JText::_('COM_JEM_SELECT').'
+		$html[] ='<button type="button" class="btn btn-link btn-primary"  data-bs-toggle="modal" data-bs-target="#contact-modal">'.JText::_('COM_JEM_SELECT').'
 		</button>';
 		$html[] = '  </div>';
 		$html[] = '</div>';

@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -62,11 +62,7 @@ class JemViewImagehandler extends JViewLegacy
 		$app->input->set('folder', $folder);
 
 		// Do not allow cache
-		if (version_compare(JVERSION, '3.0', 'ge')) {
-			$app->allowCache(false);
-		} else {
-			JResponse::allowCache(false);
-		}
+		$app->allowCache(false);
 
 		// Load css
 		// HTMLHelper::_('stylesheet', 'com_jem/backend.css', array(), true);

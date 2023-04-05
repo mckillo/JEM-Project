@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -75,7 +75,7 @@ $options = array(
 							<div id="det-pane-details" class="accordion-collapse collapse show" aria-labelledby="det-pane-header" data-bs-parent="#accordionHelpForm">
 								<div class="accordion-body">
 									<fieldset class="panelform">
-									<table class="adminlist">
+									<table class="adminlist help-toc">
 										<?php
 										foreach ($this->toc as $k=>$v) {
 											echo '<tr>';
@@ -95,12 +95,7 @@ $options = array(
 			</div>
 			<div class="col-md-8">
 				<div id="datacellhelp" class="w-100">
-					<fieldset title="<?php echo Text::_('COM_JEM_HELP_VIEW'); ?>">
-						<legend>
-							<?php echo Text::_('COM_JEM_HELP_VIEW'); ?>
-						</legend>
-							<iframe name="helpFrame" src="<?php echo 'components/com_jem/help/'.$this->langTag.'/intro.html'; ?>" class="helpFrame w-100" height="600px"></iframe>
-					</fieldset>
+					<iframe name="helpFrame" src="<?php echo 'components/com_jem/help/'.$this->langTag.'/intro.html'; ?>" class="helpFrame w-100" height="600px"></iframe>
 				</div>
 			</div>
 		</div>
