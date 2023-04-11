@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -29,6 +29,6 @@ class JFormFieldHits extends JFormField
 	{
 		$onclick	= ' onclick="document.getElementById(\''.$this->id.'\').value=\'0\';"';
 
-		return '<input style="border:0;" type="text" name="'.$this->name.'" id="'.$this->id.'" value="'.htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8').'" readonly="readonly" /><input type="button"'.$onclick.' value="'.JText::_('COM_JEM_RESET_HITS').'" class="button"/>';
+		return '<input type="text" name="'.$this->name.'" id="'.$this->id.'" class="form-control field-user-input-name valid form-control-success w-20" value="'.htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8').'" readonly="readonly" style="display:inline-block;" /><input type="button"'.$onclick.' value="'.JText::_('COM_JEM_RESET_HITS').'" class="btn btn-primary selectcat" />';
 	}
 }

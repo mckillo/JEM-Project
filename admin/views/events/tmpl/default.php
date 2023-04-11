@@ -104,7 +104,7 @@ $(document).ready(function() {
 					<tr>
 						<th width="1%" class="center"><input type="checkbox" name="checkall-toggle" value="" title="<?php echo Text::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" /></th>
             <th class="nowrap"><?php echo HTMLHelper::_('grid.sort', 'COM_JEM_STARTDATE', 'a.dates', $listDirn, $listOrder ); ?></th>
-						<th><?php echo HTMLHelper::_('grid.sort', 'COM_JEM_STARTTIME', 'a.times', $listDirn, $listOrder ); ?></th>
+						<th><?php echo HTMLHelper::_('grid.sort', 'COM_JEM_STARTTIME_SHORT', 'a.times', $listDirn, $listOrder ); ?></th>
 						<th class="nowrap"><?php echo HTMLHelper::_('grid.sort', 'COM_JEM_EVENT_TITLE', 'a.title', $listDirn, $listOrder ); ?></th>
 						<th><?php echo HTMLHelper::_('grid.sort', 'COM_JEM_VENUE', 'loc.venue', $listDirn, $listOrder ); ?></th>
 						<th><?php echo HTMLHelper::_('grid.sort', 'COM_JEM_CITY', 'loc.city', $listDirn, $listOrder ); ?></th>
@@ -115,7 +115,7 @@ $(document).ready(function() {
 						<th width="1%"><?php echo HTMLHelper::_('grid.sort', 'JFEATURED', 'a.featured', $listDirn, $listOrder, NULL, 'desc'); ?></th>
 						<th class="nowrap"><?php echo Text::_('COM_JEM_CREATION'); ?></th>
 						<th class="center"><?php echo HTMLHelper::_('grid.sort', 'COM_JEM_HITS', 'a.hits', $listDirn, $listOrder ); ?></th>
-						<th width="1%" class="center nowrap"><?php echo Text::_('COM_JEM_REGISTERED_USERS'); ?></th>
+						<th width="1%" class="center nowrap"><?php echo Text::_('COM_JEM_REGISTERED_USERS_SHORT'); ?></th>
 						<th width="9%" class="center"><?php echo HTMLHelper::_('grid.sort',  'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?></th>
 						<th width="1%" class="center nowrap"><?php echo HTMLHelper::_('grid.sort', 'COM_JEM_ID', 'a.id', $listDirn, $listOrder ); ?></th>
 					</tr>
@@ -176,7 +176,7 @@ $(document).ready(function() {
 					?>
 					<tr class="row<?php echo $i % 2; ?>">
 						<td class="center"><?php echo HTMLHelper::_('grid.id', $i, $row->id); ?></td>
-						<td>
+						<td class="startdate">
 							<?php if ($row->checked_out) : ?>
 								<?php echo HTMLHelper::_('jgrid.checkedout', $i, $row->editor, $row->checked_out_time, 'events.', $canCheckin); ?>
 							<?php endif; ?>
@@ -188,7 +188,7 @@ $(document).ready(function() {
 								<?php echo $displaydate; ?>
 							<?php endif; ?>
 						</td>
-						<td><?php echo $displaytime; ?></td>
+						<td class="starttime"><?php echo $displaytime; ?></td>
 						<td class="eventtitle">
 							<?php if ($canEdit) : ?>
 								<a href="<?php echo Route::_('index.php?option=com_jem&task=event.edit&id='.(int) $row->id); ?>">
@@ -221,7 +221,7 @@ $(document).ready(function() {
 						</td>
 						<td class="city"><?php echo $row->city ? $this->escape($row->city) : '-'; ?></td>
 						<td class="state"><?php echo $row->state ? $this->escape($row->state) : '-'; ?></td>
-                        <td class="state"><?php echo $row->state ? $this->escape($row->country) : '-'; ?></td>
+                        <td class="country"><?php echo $row->country ? $this->escape($row->country) : '-'; ?></td>
 						<td class="category">
 							<?php echo implode(", ", JemOutput::getCategoryList($row->categories, $this->jemsettings->catlinklist,true)); ?>
 						</td>
@@ -239,20 +239,19 @@ $(document).ready(function() {
 						</td>
 						<td>
 							<?php
-							$created	 	= HTMLHelper::_('date',$row->created,Text::_('DATE_FORMAT_LC2'));
-							$modified 		= HTMLHelper::_('date',$row->modified,Text::_('DATE_FORMAT_LC2') );
+							$created	 	= HTMLHelper::_('date',$row->created,Text::_('DATE_FORMAT_LC5'));
 							$image 			= HTMLHelper::_('image','com_jem/icon-16-info.png',NULL,NULL,true );
-
 							$overlib 		= Text::_('COM_JEM_CREATED_AT').': '.$created.'<br />';
+							$overlib 		.= Text::_('COM_JEM_AUTHOR').'</strong>: ' . $row->author.'<br />';
+							$overlib 		.= Text::_('COM_JEM_EMAIL').'</strong>: ' . $row->email.'<br />';
 							if ($row->author_ip != '') {
 								$overlib		.= Text::_('COM_JEM_WITH_IP').': '.$row->author_ip.'<br />';
 							}
-							if ($row->modified != '0000-00-00 00:00:00') {
-								$overlib 	.= Text::_('COM_JEM_EDITED_AT').': '.$modified.'<br />';
-								$overlib 	.= Text::_('COM_JEM_GLOBAL_MODIFIEDBY').': '.$row->modified_by.'<br />';
+							if (!empty($row->modified)) {
+								$overlib 	.= '<br />'.Text::_('COM_JEM_EDITED_AT').': '. HTMLHelper::_('date',$row->modified,Text::_('DATE_FORMAT_LC5') ) .'<br />'. Text::_('COM_JEM_GLOBAL_MODIFIEDBY').': '.$row->modified_by;
 							}
 							?>
-							<span <?php echo JEMOutput::tooltip(Text::_('COM_JEM_EVENTS_STATS'), $overlib . '<br /><strong>' . Text::_('COM_JEM_AUTHOR').'</strong>: ' . $row->author . '<br /><br /><strong>' . Text::_('COM_JEM_EMAIL').'</strong>: ' . $row->email, 'editlinktip'); ?>>
+							<span <?php echo JEMOutput::tooltip(Text::_('COM_JEM_EVENTS_STATS'), $overlib, 'editlinktip'); ?>
 							
 							<a href="<?php echo 'index.php?option=com_users&amp;task=edit&amp;hidemainmenu=1&amp;cid[]='.$row->created_by; ?>"><?php echo $row->author; ?></a></span>
 							

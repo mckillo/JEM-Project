@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -13,9 +13,7 @@ defined('_JEXEC') or die;
 <div id="jem" class="jem_eventslist<?php echo $this->pageclass_sfx;?>">
 	<div class="buttons">
 		<?php
-		//$btn_params = array('task' => $this->task, 'print_link' => $this->print_link);
-		$btn_params = array('task' => $this->task, 'print_link' => JRoute::_('index.php?option=com_jem&view=eventslist&layout=print&task=print&tmpl=component&print=1'));
-		
+		$btn_params = array('task' => $this->task, 'print_link' => $this->print_link);
 		echo JemOutput::createButtonBar($this->getName(), $this->permissions, $btn_params);
 		?>
 	</div>

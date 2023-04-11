@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -57,7 +57,7 @@ defined('_JEXEC') or die;
 							<td>
 								<input class="inputbox" name="userfile" id="userfile" type="file" />
 								<br /><br />
-								<input class="button" type="submit" value="<?php echo JText::_('COM_JEM_UPLOAD') ?>" name="adminForm" />
+								<input class="btn btn-primary" type="submit" value="<?php echo JText::_('COM_JEM_UPLOAD') ?>" name="adminForm" />
 							</td>
 						</tr>
 					</tbody>
@@ -105,6 +105,11 @@ defined('_JEXEC') or die;
 								} else {
 									echo "<br /><span style='color:red'>".JText::_('COM_JEM_NO_GIF_SUPPORT')."</span>";
 								}
+                                if($this->jemsettings->gddisabled == 0 || (imagetypes() & IMG_WEBP)) {
+                                    echo "<br /><span style='color:green'>".JText::_('COM_JEM_WEBP_SUPPORT')."</span>";
+                                } else {
+                                    echo "<br /><span style='color:red'>".JText::_('COM_JEM_NO_WEBP_SUPPORT')."</span>";
+                                }
 								?>
 							</td>
 						</tr>

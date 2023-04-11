@@ -1,6 +1,6 @@
 <?php
 /**
- * @version 2.3.15
+ * @version 2.3.17
  * @package JEM
  * @copyright (C) 2013-2023 joomlaeventmanager.net
  * @copyright (C) 2005-2009 Christoph Lukes
@@ -61,17 +61,17 @@ use Joomla\CMS\Language\Text;
                                 </li>
                                 <li>
                                     <label for="dates"><?php echo Text::_('COM_JEM_EXPORT_FROM_DATE').':'; ?></label>
-                                    <?php echo HTMLHelper::_('calendar', date("Y-m-d"), 'dates', 'dates', '%Y-%m-%d', array('class' => 'inputbox validate-date', 'showTime' => false)); ?>
+                                    <?php echo HTMLHelper::_('calendar', date("Y-m-d"), 'dates', 'dates', 'Y-m-d', array('class' => 'inputbox validate-date', 'showTime' => false)); ?>
                                 </li>
                                 <li>
                                     <label for="enddates"><?php echo Text::_('COM_JEM_EXPORT_TO_DATE').':'; ?></label>
-                                    <?php echo HTMLHelper::_('calendar', date("Y-m-d"), 'enddates', 'enddates', '%Y-%m-%d', array('class' => 'inputbox validate-date', 'showTime' => false)); ?>
+                                    <?php echo HTMLHelper::_('calendar', date('Y-m-d',strtotime("+6 months")), 'enddates', 'enddates', 'Y-m-d', array('class' => 'inputbox validate-date', 'showTime' => false)); ?>
                                 </li>
                             </ul>
                         </div>
                         <div class="width-50 fltrt" style="padding: 0 1vw;">
                             <div>
-                                <label style="bottom: 100%;left: 0;position: sticky;" for="cid"><?php echo Text::_('COM_JEM_CATEGORY').':'; ?></label>
+                                <label for="cid"><?php echo Text::_('COM_JEM_CATEGORY').':'; ?></label>
                                 <?php echo $this->categories; ?>
                                 <div style="clear: both"></div>
                                 <input class="btn btn-primary selectcat" type="button" name="selectall" value="<?php echo Text::_('COM_JEM_EXPORT_SELECT_ALL_CATEGORIES'); ?>" onclick="selectAll();">
