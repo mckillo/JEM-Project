@@ -8,6 +8,7 @@
  */
 
 defined('_JEXEC') or die;
+use Joomla\CMS\Uri\Uri;
 ?>
 
 <script type="text/javascript">
@@ -77,6 +78,7 @@ defined('_JEXEC') or die;
   }
 </style>
 <?php
+$uri = Uri::getInstance();
 function jem_common_show_filter(&$obj) {
   if ($obj->settings->get('global_show_filter',1) && !JemHelper::jemStringContains($obj->params->get('pageclass_sfx'), 'jem-hidefilter')) {
     return true;
@@ -101,8 +103,7 @@ function jem_common_show_filter(&$obj) {
       <button class="btn btn-secondary" type="button" onclick="document.getElementById('filter_search').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button> 
     </div>
 	  	<?php if ($this->settings->get('global_display',1)) : ?>
-	<div class="jem_fright">
-		   
+	<div class="jem-limit-smallist">
 		<label for="limit"><?php echo JText::_('COM_JEM_DISPLAY_NUM'); ?></label>
 		<?php echo $this->pagination->getLimitBox(); ?>
 		
@@ -299,8 +300,8 @@ function jem_common_show_filter(&$obj) {
           </div>
        
           <meta itemprop="name" content="<?php echo $this->escape($row->title); ?>" />
-          <meta itemprop="url" content="<?php echo rtrim(JURI::base(), '/').JRoute::_(JemHelperRoute::getEventRoute($row->slug)); ?>" />
-          <meta itemprop="identifier" content="<?php echo rtrim(JURI::base(), '/').JRoute::_(JemHelperRoute::getEventRoute($row->slug)); ?>" />
+          <meta itemprop="url" content="<?php echo rtrim($uri->base(), '/').JRoute::_(JemHelperRoute::getEventRoute($row->slug)); ?>" />
+          <meta itemprop="identifier" content="<?php echo rtrim($uri->base(), '/').JRoute::_(JemHelperRoute::getEventRoute($row->slug)); ?>" />
           <div itemtype="https://schema.org/Place" itemscope itemprop="location" style="display: none;" >
             <?php if (!empty($row->locid)) : ?>
               <meta itemprop="name" content="<?php echo $this->escape($row->venue); ?>" />
